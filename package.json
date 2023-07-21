@@ -9,10 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-three/drei": "^9.78.2",
+    "@react-three/fiber": "^8.13.5",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.10",
+    "gsap": "^3.12.2",
+    "leva": "^0.9.35",
     "next": "13.4.10",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "three": "^0.154.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-prettier": "^5.0.0",
+    "file-loader": "^6.2.0",
+    "prettier": "^3.0.0"
   }
 }

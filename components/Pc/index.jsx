@@ -1,29 +1,23 @@
 import React, { forwardRef } from 'react'
 
 import { Html, useGLTF } from '@react-three/drei'
-import { useControls } from 'leva'
+
+import { useThree } from '@react-three/fiber'
 
 export const Pc = forwardRef((props, ref) => {
-  const { nodes, materials } = useGLTF('models/pc.glb')
+  const { pcRef } = ref
+  const { setIsHovered } = props
 
-  const { pcX, pcY, pcZ, iX, iY, iZ } = useControls({
-    pcX: 0.33,
-    pcY: -0.93,
-    pcZ: -0.24,
-    tvRotx: 0.01,
-    tvRoty: -2.0711999999999953,
-    tvRotz: -0.1918000000000002,
-    iX: -0.03,
-    iY: 0.72,
-    iZ: 0.597,
-  })
+  const { nodes, materials } = useGLTF('models/pc-v1-compressed.glb')
+
+  const { gl } = useThree()
 
   return (
     <group
-      ref={ref}
+      ref={pcRef}
       {...props}
       dispose={null}
-      position={[pcX, pcY, pcZ]}
+      position={[0.33, -0.93, -0.24]}
       rotation={[0, Math.PI, 0]}
     >
       <mesh
@@ -45,21 +39,24 @@ export const Pc = forwardRef((props, ref) => {
         rotation={[Math.PI, 0, Math.PI]}
       />
       <Html
-        position={[iX, iY, iZ]}
+        position={[-0.03, 0.73, 0.591]}
         transform
         distanceFactor={1.16}
         rotation={[Math.PI + 0.06, 0, Math.PI]}
+        scale={[0.107, 0.175, 1]}
+        portal={{ current: gl.domElement.parentNode }}
       >
-        <div className="iframe-container">
-          <iframe
-            src="https://panelka-pc-updated.vercel.app/"
-            frameBorder="0"
-            title="pc"
-          />
-        </div>
+        <iframe
+          src="https://panelka-pc-updated.vercel.app/"
+          title="pc"
+          onMouseEnter={() => {
+            setIsHovered(true)
+          }}
+          onMouseLeave={() => setIsHovered(false)}
+        />
       </Html>
     </group>
   )
 })
 
-useGLTF.preload('models/pc.glb')
+useGLTF.preload('models/pc-v1-compressed.glb')

@@ -2,24 +2,21 @@ import * as THREE from 'three'
 
 import React, { useEffect, useRef } from 'react'
 import { useGLTF, useAnimations, Html } from '@react-three/drei'
-import { useControls } from 'leva'
+
+import { useThree } from '@react-three/fiber'
 import { videos } from './constants'
 
 export function Hand(props) {
+  const { gl } = useThree()
   const group = useRef()
   const state = useRef({
     clicked: 0,
   })
   const playerRef = useRef(null)
-  const { nodes, materials, animations } = useGLTF('models/hand.glb')
+  const { nodes, materials, animations } = useGLTF('models/hand-v1.glb')
   const { actions } = useAnimations(animations, group)
   const audio = new Audio('sounds/remote-pressed.mp3')
 
-  const { handX, handY, handZ } = useControls({
-    handX: -0.96,
-    handY: 2.01,
-    handZ: 1.09,
-  })
   useEffect(() => {
     function handleClick() {
       if (state.current.clicked === 0) {
@@ -62,7 +59,7 @@ export function Hand(props) {
       <group name="Scene">
         <group
           name="Armature"
-          position={[0.188 + handX, -0.051 + handY, 0 + handZ]}
+          position={[0.188 + -0.96, -0.051 + 2.01, 0 + 1.09]}
           rotation={[0, 0, 0.264]}
           scale={0.62}
         >
@@ -80,7 +77,7 @@ export function Hand(props) {
           receiveShadow
           geometry={nodes.Circle010_Buttons_0.geometry}
           material={materials['Material.003']}
-          position={[0.559 + handX, 0.369 + handY, -0.279 + handZ]}
+          position={[0.559 + -0.96, 0.369 + 2.01, -0.279 + 1.09]}
           rotation={[-1.844, 0.443, 0.165]}
           scale={0.051}
         />
@@ -89,6 +86,7 @@ export function Hand(props) {
           transform
           distanceFactor={1.16}
           rotation={[0, Math.PI / 2, 0]}
+          portal={{ current: gl.domElement.parentNode }}
         >
           <video
             ref={playerRef}
@@ -101,4 +99,4 @@ export function Hand(props) {
   )
 }
 
-useGLTF.preload('models/hand.glb')
+useGLTF.preload('models/hand-v1.glb')

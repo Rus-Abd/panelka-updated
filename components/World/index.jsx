@@ -17,7 +17,7 @@ export function World() {
         <PerspectiveCamera position={[0, 0, 1]} fov={60} makeDefault />
         {start && (
           <ScrollControls pages={3} damping={0.25}>
-            <Exprience start={start} />
+            <Exprience />
           </ScrollControls>
         )}
       </Canvas>

@@ -20,6 +20,7 @@
     "import/prefer-default-export": "off",
     "react/jsx-props-no-spreading": "off",
     "react/destructuring-assignment": "off",
+    "jsx-a11y/media-has-caption": "off",
     "react/no-unknown-property": ["off", { "ignore": ["JSX"] }]
   },
   "plugins": ["import"],

@@ -11,16 +11,10 @@ canvas {
 }
 html,
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
   overflow: hidden;
 }
 
-.iframe-container {
-  position: relative;
-  height: 500px;
-  width: 1440px;
-  overflow: hidden;
-}
 video {
   position: absolute;
   top: 10px;
@@ -31,14 +25,11 @@ video {
   object-fit: cover;
 }
 iframe {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  height: 500px;
+  width: 1440px;
+  overflow: hidden;
   border: none;
-  transform: scaleX(0.1); /* 1440px / 150px = 9.6 */
-  transform: scaleY(0.1);
-  transform-origin: 0 0; /* Set the scaling origin to the top-left corner */
 }
 .loadingScreen {
   position: fixed;
@@ -46,7 +37,7 @@ iframe {
   left: 0;
   bottom: 0;
   right: 0;
-  background-image: url('../public/images/loading-screen.png');
+  background-image: url('/images/loading-screen.png');
   display: flex;
   align-items: center;
   justify-content: center;

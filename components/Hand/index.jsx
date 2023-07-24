@@ -89,9 +89,12 @@ export function Hand(props) {
           portal={{ current: gl.domElement.parentNode }}
         >
           <video
+            preload="auto"
             ref={playerRef}
             poster="/images/static-tv.gif"
             src="/videos/mmm.mp4"
+            loop
+            playsInline
           />
         </Html>
       </group>

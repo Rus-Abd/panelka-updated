@@ -1,8 +1,27 @@
-import React, { forwardRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { forwardRef, useEffect, useState } from 'react'
+import { Html, useGLTF, useScroll } from '@react-three/drei'
+import { useThree } from '@react-three/fiber'
 
 export const PanelkaBuilding = forwardRef((props, ref) => {
+  const [iconIsShown, setIconIsShown] = useState(true)
   const { nodes, materials } = useGLTF('models/panelkaglb-v1-compressed.glb')
+  const { gl } = useThree()
+
+  const scroll = useScroll()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (scroll.offset > 0) {
+        setIconIsShown(false)
+      }
+    }
+
+    scroll.el.addEventListener('scroll', handleScroll)
+
+    return () => {
+      scroll.el.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   return (
     <group dispose={null} ref={ref}>
@@ -24,6 +43,21 @@ export const PanelkaBuilding = forwardRef((props, ref) => {
         rotation={[-Math.PI / 2, 0, Math.PI / 2]}
         scale={[0.004, 0.004, 0.005]}
       />
+      {iconIsShown && (
+        <Html
+          position={[-0.03, 2.53, -4.591]}
+          transform
+          distanceFactor={1.16}
+          rotation={[Math.PI + 0.06, 0, Math.PI]}
+          portal={{ current: gl.domElement.parentNode }}
+        >
+          <div class="scroll-msg-container">
+            <div class="scroll-msg-inner">
+              <div class="scroll-msg-wheel" />
+            </div>
+          </div>
+        </Html>
+      )}
     </group>
   )
 })

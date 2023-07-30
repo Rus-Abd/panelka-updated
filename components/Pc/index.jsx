@@ -8,7 +8,7 @@ export const Pc = forwardRef((props, ref) => {
   const { pcRef } = ref
   const { setIsHovered } = props
 
-  const { nodes, materials } = useGLTF('models/pc-v1-compressed.glb')
+  const { nodes, materials } = useGLTF('models/pc-omptimized.glb')
 
   const { gl } = useThree()
 
@@ -59,4 +59,4 @@ export const Pc = forwardRef((props, ref) => {
   )
 })
 
-useGLTF.preload('models/pc-v1-compressed.glb')
+useGLTF.preload('models/pc-omptimized.glb')

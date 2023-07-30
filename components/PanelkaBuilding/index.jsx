@@ -4,7 +4,7 @@ import { useThree } from '@react-three/fiber'
 
 export const PanelkaBuilding = forwardRef((props, ref) => {
   const [iconIsShown, setIconIsShown] = useState(true)
-  const { nodes, materials } = useGLTF('models/panelkaglb-v1-compressed.glb')
+  const { nodes, materials } = useGLTF('models/panelkaglb-optimized.glb')
   const { gl } = useThree()
 
   const scroll = useScroll()
@@ -29,7 +29,7 @@ export const PanelkaBuilding = forwardRef((props, ref) => {
         castShadow
         receiveShadow
         geometry={nodes.Plane.geometry}
-        material={materials['Material.004']}
+        material={materials['Material.001']}
         position={[-9.36, -6.0, -33.28]}
         rotation={[-Math.PI / 2, Math.PI / 2, -Math.PI / 2]}
         scale={[-221.207, -101.1, -272.979]}
@@ -38,7 +38,7 @@ export const PanelkaBuilding = forwardRef((props, ref) => {
         castShadow
         receiveShadow
         geometry={nodes.Box018_Entrance_02_0001.geometry}
-        material={materials['Material.005']}
+        material={materials.Material}
         position={[5.93, -6.0, -21.29]}
         rotation={[-Math.PI / 2, 0, Math.PI / 2]}
         scale={[0.004, 0.004, 0.005]}
@@ -62,4 +62,4 @@ export const PanelkaBuilding = forwardRef((props, ref) => {
   )
 })
 
-useGLTF.preload('models/panelkaglb-v1-compressed.glb')
+useGLTF.preload('models/panelkaglb-optimized.glb')

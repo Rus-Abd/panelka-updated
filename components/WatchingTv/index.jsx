@@ -4,7 +4,7 @@ import { useGLTF } from '@react-three/drei'
 import { Hand } from '../Hand'
 
 export const WatchingTv = forwardRef((props, ref) => {
-  const { nodes, materials } = useGLTF('models/watching_tv-v1-compressed.glb')
+  const { nodes, materials } = useGLTF('models/watching_tv-optimized.glb')
 
   return (
     <group
@@ -26,7 +26,7 @@ export const WatchingTv = forwardRef((props, ref) => {
         castShadow
         receiveShadow
         geometry={nodes.main.geometry}
-        material={materials['Material.002']}
+        material={materials.Material}
         position={[-0.339 + -1.22, 0.701 + 1.8, -0.085 + 0.9433]}
         rotation={[-Math.PI / 2, 0, Math.PI / 2]}
         scale={0.878}
@@ -35,7 +35,7 @@ export const WatchingTv = forwardRef((props, ref) => {
         castShadow
         receiveShadow
         geometry={nodes.walls.geometry}
-        material={materials['Material.003']}
+        material={materials['Material.002']}
         position={[0 + -1.22, 1 + 1.8, 0 + 0.9433]}
       />
       <Hand />
@@ -43,4 +43,4 @@ export const WatchingTv = forwardRef((props, ref) => {
   )
 })
 
-useGLTF.preload('models/watching_tv-v1-compressed.glb')
+useGLTF.preload('models/watching_tv-optimized.glb')

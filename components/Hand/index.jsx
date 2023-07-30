@@ -13,7 +13,7 @@ export function Hand(props) {
     clicked: 0,
   })
   const playerRef = useRef(null)
-  const { nodes, materials, animations } = useGLTF('models/hand-v1.glb')
+  const { nodes, materials, animations } = useGLTF('models/hand-optimized.glb')
   const { actions } = useAnimations(animations, group)
   const audio = new Audio('sounds/remote-pressed.mp3')
 
@@ -102,4 +102,4 @@ export function Hand(props) {
   )
 }
 
-useGLTF.preload('models/hand-v1.glb')
+useGLTF.preload('models/hand-optimized.glb')

@@ -92,10 +92,11 @@ export function Hand(props) {
             preload="auto"
             ref={playerRef}
             poster="/images/static-tv.gif"
-            src="/videos/mmm.mp4"
             loop
             playsInline
-          />
+          >
+            <source src={videos[state.current.clicked]} type="video/mp4;" />
+          </video>
         </Html>
       </group>
     </group>
